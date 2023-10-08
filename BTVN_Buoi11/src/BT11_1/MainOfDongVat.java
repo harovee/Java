@@ -21,7 +21,9 @@ public class MainOfDongVat {
         String name = scan.nextLine();
         System.out.println("Nhap tuoi: ");
         int age = Integer.valueOf(scan.nextLine());
-        DongVat ani = new DongVat(animalID, name, age, age);
+        System.out.println("Nhap can nang: ");
+        double weight = Double.valueOf(scan.nextLine());
+        DongVat ani = new DongVat(animalID, name, age, weight);
         animal.add(ani);
         for (DongVat dongVat : animal) {
             dongVat.infoPrint();

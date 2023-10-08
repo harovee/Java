@@ -17,6 +17,8 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int select;
+        ArrayList<DienThoai> list = new ArrayList<>();
+        DienThoaiService service = new DienThoaiService();
         do {
             System.out.println("---------MENU-----------");
             System.out.println("1. Thong tin dien thoai");
@@ -34,34 +36,56 @@ public class Main {
             switch (select) {
                 case 1: {
                     System.out.println("Thong tin dien thoai");
+                    service.DienThoaiInput(list);
                     break;
                 }
                 case 2: {
                     System.out.println("In cac thong tin ra man hinh");
+                    service.DienThoaiPrint(list);
                     break;
                 }
                 case 3: {
                     System.out.println("Tim cac dien thoai theo gia");
+                    System.out.println("Nhap gia dien thoai can tim: ");
+                    int costInput = Integer.valueOf(scan.nextLine());
+                    service.timDienThoaiTheoGia(list, costInput);
                     break;
                 }
                 case 4: {
                     System.out.println("Nhap vao bo nho - Liet ke cac dien thoai");
+                    System.out.println("Nhap bo nho dien thoai can tim: ");
+                    int capacityInput = Integer.valueOf(scan.nextLine());
+                    service.lietKeDTTheoBoNho(list, capacityInput);
                     break;
                 }
                 case 5: {
                     System.out.println("Sap xep dien thoai giam dan theo ten");
+                    service.sapXepGiamDanTheoTen(list);
+                    service.DienThoaiPrint(list);
                     break;
                 }
                 case 6: {
                     System.out.println("Sap xep dien thoai tang dan theo gia");
+                    service.sapXepTangDanTheoGia(list);
+                    service.DienThoaiPrint(list);
                     break;
                 }
                 case 7: {
                     System.out.println("Xoa dien thoai theo vi tri");
+                    System.out.println("Moi nhap vi tri can xoa: ");
+                    int index = Integer.valueOf(scan.nextLine());
+                    service.xoaTheoViTri(list, index);
+                    System.out.println("List sau khi xoa: ");
+                    service.DienThoaiPrint(list);
                     break;
                 }
                 case 8: {
                     System.out.println("Xoa dien thoai theo ma");
+                    System.out.println("Nhap ma dien thoai can xoa: ");
+                    int phoneIDInput = Integer.valueOf(scan.nextLine());
+                    service.xoaTheoMaDT(list, phoneIDInput);
+                    System.out.println("List sau khi xoa: ");
+                    service.DienThoaiPrint(list);
                     break;
                 }
                 case 0: {
